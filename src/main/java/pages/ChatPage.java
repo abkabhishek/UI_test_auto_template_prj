@@ -3,12 +3,15 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ChatPage {
-    public WebDriver driver;
+public class ChatPage extends BasePage{
+//    public WebDriver driver;
 
     public By headerUsername = new By.ById("header-username");
     public By headerRoomName = new By.ById("room-name");
@@ -21,7 +24,14 @@ public class ChatPage {
     public By messageSendButton = new By.ByCssSelector("button#send_msg");
 
     public ChatPage(WebDriver driverObj) {
-        driver = driverObj;
+        super(driverObj);
+//        driver = driverObj;
+
+    }
+
+    public void waitForPage(){
+
+        waitForPageByName("chatpage");
     }
 
 
@@ -50,6 +60,13 @@ public class ChatPage {
         return new Message(driver.findElements(messages).get(nth));
     }
 
+    public Message getLastChatMessage(){
+        Integer chatCount = getChatMessageCount();
+        return new Message(driver.findElements(messages).get(chatCount-1));
+    }
+
+
+
     public List<Message> getAllChatMessage(){
         List<WebElement> msgElems = driver.findElements(messages);
         return msgElems.stream().map(Message::new).collect(Collectors.toList());
@@ -66,6 +83,11 @@ public class ChatPage {
     public void sendMessage(String msg){
         inputMessage(msg);
         clickSendButton();
+    }
+
+    public void logOutUser(){
+        driver.findElement(headerLogoutButton).click();
+        waitForPageByName("loginpage");
     }
 
 

@@ -8,6 +8,8 @@ import core.utils.Browser;
 import core.utils.ConfigMan;
 
 import pages.BasePage;
+import pages.ChatPage;
+import pages.LoginPage;
 
 
 public class BaseTests {
@@ -17,7 +19,7 @@ public class BaseTests {
 
 
     // web app under test
-    public BasePage app;
+    public App app;
 
 
     @BeforeClass
@@ -28,7 +30,7 @@ public class BaseTests {
 
     @BeforeMethod
     public void beforeMethod() {
-        app.openBaseUrl();
+        app.basePage.openBaseUrl();
     }
 
     @AfterMethod
@@ -38,17 +40,29 @@ public class BaseTests {
 
     @AfterClass
     public void tearDownClass() {
-        app.quit();
+        app.basePage.quit();
     }
 
 
-    public BasePage getApp() {
+    public App getApp() {
 
-        WebDriver driver = browser.getDriver("chrome");
-        BasePage app = new BasePage(driver, config.getProp("TestBaseURL"));
+        App app = new App();
         return app;
 
     }
 
 
+    public class App{
+        public BasePage basePage;
+        public LoginPage loginPage;
+        public ChatPage chatPage;
+
+        public App(){
+            WebDriver driver = browser.getDriver("chrome");
+
+            basePage = new BasePage(driver);
+            loginPage = new LoginPage(driver);
+            chatPage = new ChatPage(driver);
+        }
+    }
 }

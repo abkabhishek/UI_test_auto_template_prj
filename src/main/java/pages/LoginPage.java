@@ -2,11 +2,14 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class LoginPage {
+public class LoginPage extends BasePage{
 
-    public WebDriver driver;
+//    public WebDriver driver;
+
 
     public By username = new By.ById("username");
     public By roomSelect = new By.ById("room");
@@ -14,7 +17,13 @@ public class LoginPage {
 
 
     public LoginPage(WebDriver driverObj) {
-        driver = driverObj;
+        super(driverObj);
+//        driver = driverObj;
+    }
+
+    public void waitForPage(){
+
+        waitForPageByName("loginpage");
     }
 
 
@@ -44,6 +53,10 @@ public class LoginPage {
         inputUsername(user);
         selectRoom(room);
         clickLoginButton();
+
+        waitForPageByName("chatpage");
+
+
 
     }
 

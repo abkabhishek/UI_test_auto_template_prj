@@ -13,7 +13,7 @@ public class Browser {
             case "chrome":
                 System.setProperty("webdriver.chrome.driver", "resources/chromedriver");
                 driver = new ChromeDriver();
-                driver.manage().window().maximize();
+//                driver.manage().window().maximize();
                 break;
             default:
                 System.setProperty("webdriver.chrome.driver", "resources/chromedriver");
