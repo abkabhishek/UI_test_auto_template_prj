@@ -11,8 +11,6 @@ To start with framework building, you need to do following steps:
 ```
 1. Environment Setup - Setup the development environment on the local machine by installing prerequisites.
 2. Project Setup - Git Clone the UI_test_auto_template_prj repo on your local machine.
-3. Writing Project's Automated Cases - Start writing Page Objects, Step definitions and Feature Files
-4. Running Test - Run the mvn test, Simple... :)
 
 ```
 
