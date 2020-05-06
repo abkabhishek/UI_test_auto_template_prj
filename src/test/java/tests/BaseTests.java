@@ -59,6 +59,7 @@ public class BaseTests {
 
         public App(){
             WebDriver driver = browser.getDriver("chrome");
+//            WebDriver driver = browser.getDriver("remotechrome");
 
             basePage = new BasePage(driver);
             loginPage = new LoginPage(driver);

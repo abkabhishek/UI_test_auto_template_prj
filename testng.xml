@@ -1,0 +1,8 @@
+<suite name="chat application test suite" thread-count="2" parallel="tests">
+    <test name="Regression Test" parallel="classes" thread-count="2">
+        <classes>
+            <class name="tests.LoginTests" />
+            <class name="tests.ChatRoomTests" />
+        </classes>
+    </test>
+</suite>

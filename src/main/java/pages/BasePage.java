@@ -10,6 +10,7 @@ public class BasePage {
 
     public WebDriver driver;
     public static final String baseUrl = "http://localhost:3000";
+//    public static final String baseUrl = "http://dockerhost:3000";
 
     public By loginPageElemUsername = new By.ById("username");
     public By chatPageElemHeaderUsername = new By.ById("header-username");
